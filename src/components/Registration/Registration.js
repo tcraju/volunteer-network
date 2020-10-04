@@ -5,7 +5,7 @@ import { Button, Grid } from '@material-ui/core';
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import { UserContext } from '../../App';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 
 
@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 const Registration = () => {
+    const history = useHistory()
     const classes = useStyles();
     const {jobId } = useParams();
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
@@ -33,15 +34,16 @@ const Registration = () => {
         .then( response => response.json())
         .then(data => setTask(data))
        
-    },[]);
+    },[jobId]);
 
     let selectedTask = task.filter(x => x.id == jobId)
 
-   
+ 
     const [volunteerInfo, setVolunteerInfo] = useState({
         taskId: jobId,
-        description:'',
-        workType: task.length && selectedTask[0].name
+        description:''
+        // workType: task.length && selectedTask[0].name,
+        // taskImage: task.length && selectedTask[0].image
     });
 
 
@@ -70,10 +72,14 @@ const Registration = () => {
     };
 
     const handleSubmit = (e) => {
+        let taskName = selectedTask[0].name
+        let taskImg = selectedTask[0].image
+        const additionalTaskInfo = {workType: taskName, taskImage: taskImg}
+
         
-        const detailInfoForTask = {...loggedInUser, ...volunteerInfo, ...selectedDate}
+        const detailInfoForTask = {...loggedInUser, ...volunteerInfo, ...selectedDate, ...additionalTaskInfo}
         
-        // console.log(detailInfoForTask);
+    
         fetch('http://localhost:5000/addTask',{
             method:'POST',
             headers:{'content-type': 'application/json'},
@@ -83,7 +89,7 @@ const Registration = () => {
         .then(data => {
             console.log(data);
         })
-
+        history.push('/taskDetail')
         e.preventDefault();
     }
 
@@ -113,9 +119,9 @@ const Registration = () => {
                     />
             </MuiPickersUtilsProvider>
             <br />
-            <TextField id="standard-basic" name='description' label="Description" onBlur={handleBlur}/>
+            <TextField id="job-descripton" name='description' label="Description" onBlur={handleBlur} required/>
             <br />
-            <TextField id="standard-basic"  value={task.length && selectedTask[0].name} />
+            <TextField id="job-category"  value={task.length && selectedTask[0].name} />
             <br />
             <Button type="submit" variant="contained">Registration</Button>
 

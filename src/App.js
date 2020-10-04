@@ -51,9 +51,9 @@ function App(props) {
           <PrivateRoute path="/registration/:jobId">
             <Registration></Registration>
           </PrivateRoute>
-          <Route path="/task/:id">
+          <PrivateRoute path="/taskDetail">
             <TaskDetail></TaskDetail>
-          </Route>
+          </PrivateRoute>
           <Route path="*">
             <NotFound></NotFound>
           </Route>

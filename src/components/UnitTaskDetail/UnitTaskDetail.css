@@ -1,0 +1,11 @@
+.task-image {
+
+    width: 150px;
+    height: 120px;
+    /* margin-right: 20px; */
+}
+.single-task-area{
+    border: 1px solid lightgray;
+    background-color: white;
+    border-radius: 10px;
+}
