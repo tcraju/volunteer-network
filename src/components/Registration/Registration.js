@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { Button, Grid } from '@material-ui/core';
@@ -6,11 +6,6 @@ import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/picker
 import DateFnsUtils from '@date-io/date-fns';
 import { UserContext } from '../../App';
 import { useParams } from 'react-router-dom';
-import fakeData from '../../fakeData'
-
-
-
-
 
 
 
@@ -30,14 +25,28 @@ const Registration = () => {
     const classes = useStyles();
     const {jobId } = useParams();
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-    let selectedTask = fakeData.filter(x => x.id == jobId)
 
+    const [task, setTask] = useState([]);
+ 
+    useEffect(() => {
+        fetch('http://localhost:5000/jobCategory')
+        .then( response => response.json())
+        .then(data => setTask(data))
+       
+    },[]);
 
+    let selectedTask = task.filter(x => x.id == jobId)
+
+   
     const [volunteerInfo, setVolunteerInfo] = useState({
         taskId: jobId,
         description:'',
-        workType:selectedTask[0].name
+        workType: task.length && selectedTask[0].name
     });
+
+
+
+
     const handleBlur = (e) => {
         let isFieldValid = true;
 
@@ -106,10 +115,9 @@ const Registration = () => {
             <br />
             <TextField id="standard-basic" name='description' label="Description" onBlur={handleBlur}/>
             <br />
-            <TextField id="standard-basic"  value={selectedTask[0].name} />
-            {/* <TextField id="standard-basic" name='workType' value={selectedTask[0].name} label="Organize books at the library" onBlur={handleBlur}/> */}
+            <TextField id="standard-basic"  value={task.length && selectedTask[0].name} />
             <br />
-            <Button type="submit" variant="contained" color="primary">Registration</Button>
+            <Button type="submit" variant="contained">Registration</Button>
 
 
 

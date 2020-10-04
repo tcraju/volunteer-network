@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Grid } from "@material-ui/core";
 import SingleTask from '../SingleTask/SingleTask';
-import fakeData from '../../fakeData'
+// import fakeData from '../../fakeData'
+// import Header from '../Header/Header';
 
 
 const Home = () => {
-    const [task, setTask] = useState(fakeData);
+    const [task, setTask] = useState([]);
  
-    // useEffect(() => {
-    //     fetch('https://jsonplaceholder.typicode.com/posts')
-    //     .then( response => response.json())
-    //     .then(data => setPosts(data))
-    // },[]);
+    useEffect(() => {
+        fetch('http://localhost:5000/jobCategory')
+        .then( response => response.json())
+        .then(data => setTask(data))
+        console.log(task);
+    },[]);
 
 
     return (
-        
+        <>
         <Container>
           <br/>
           <br/>
@@ -28,6 +30,7 @@ const Home = () => {
 
         </Grid>
       </Container>
+      </>
     );
 };
 

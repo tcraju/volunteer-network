@@ -1,0 +1,22 @@
+.MuiAppBar-colorPrimary {
+    color: black !important;
+    background-color: white !important;
+    box-shadow: none !important;
+}
+
+#reg-btn{
+    color: white;
+    background-color: #3F90FC;
+    width: 100px;
+    margin-left: 20px;
+}
+
+#admin-btn {
+    color: white;
+    background-color: black;
+    width: 100px;
+    margin-left: 20px;
+}
+span.MuiIconButton-label img {
+    width: 200px;
+}

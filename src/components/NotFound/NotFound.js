@@ -1,10 +1,13 @@
+import { Container } from '@material-ui/core';
 import React from 'react';
 
 const NotFound = () => {
     return (
-        <div>
+        <Container align='center'>
+            <br/>
+            <br/>
             <h2>Route not found</h2>
-        </div>
+        </Container>
     );
 };
 

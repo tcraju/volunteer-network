@@ -19,6 +19,8 @@ import TaskDetail from './components/TaskDetail/TaskDetail';
 import Registration from './components/Registration/Registration';
 import Login from './components/Login/Login';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Admin from './components/Admin/Admin';
+import Header from './components/Header/Header';
 
 export const UserContext = createContext();
 
@@ -28,7 +30,8 @@ function App(props) {
     <UserContext.Provider value = {[loggedInUser, setLoggedInUser]}>
       <h3>email: {loggedInUser.email}</h3>
       <Router>
-        {/* <Header></Header> */}
+        
+        <Header></Header>
         <Switch>
           <Route path="/home">
             <Home></Home>
@@ -36,6 +39,9 @@ function App(props) {
 
           <Route path="/login">
             <Login></Login>
+          </Route>
+          <Route path="/admin">
+            <Admin></Admin>
           </Route>
 
           <Route exact path="/">
