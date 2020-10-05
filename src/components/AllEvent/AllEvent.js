@@ -9,7 +9,7 @@ const AllEvent = () => {
     const [registeredTask, setRegisteredTask] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/registeredJob')
+        fetch('https://polar-spire-08660.herokuapp.com/registeredJob')
             .then(response => response.json())
             .then(data => setRegisteredTask(data))
         console.log(registeredTask);

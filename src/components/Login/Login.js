@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router-dom';
-import { initializeLoginFramework, handleGoogleSignIn, handleSignOut} from './LoginManager';
+import { initializeLoginFramework, handleGoogleSignIn, handleSignOut } from './LoginManager';
+import './Login.css'
+import EmptyHeader from '../EmptyHeader/EmptyHeader';
 
 
 
@@ -18,44 +20,36 @@ function Login() {
 
   initializeLoginFramework();
 
-  const [loggedInUser, setLoggedInUser ] = useContext(UserContext);
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const history = useHistory();
   const location = useLocation();
   let { from } = location.state || { from: { pathname: "/" } };
 
   const googleSignIn = () => {
-      handleGoogleSignIn()
+    handleGoogleSignIn()
       .then(res => {
         handleResponse(res, true);
       })
   }
 
-
-
-  const signOut = () => {
-      handleSignOut()
-      .then(res => {
-          handleResponse(res, false);
-      })
-  }
-
-  const handleResponse = (res, redirect) =>{
+  const handleResponse = (res, redirect) => {
     setUser(res);
     setLoggedInUser(res);
-    if(redirect){
-        history.replace(from);
+    if (redirect) {
+      history.replace(from);
     }
   }
 
-
-
   return (
-    <div style={{textAlign: 'center'}}>
-      { user.isSignedIn ? <button onClick={signOut}>Sign Out</button> :
-        <button onClick={googleSignIn}>Sign In</button>
-      }
-      
-      { user.success && <p style={{color: 'green'}}>User { newUser ? 'created' : 'Logged In'} successfully</p>}
+    <div class='page-bg'>
+        <EmptyHeader></EmptyHeader>
+        <br/>
+        <div id='login-area-padding'>
+            <div className='login-method' onClick={googleSignIn}>
+              <img src="https://iili.io/2RYDRp.png" alt="" />
+              <span>Continue with Google</span>
+              </div>
+        </div>
     </div>
   );
 }

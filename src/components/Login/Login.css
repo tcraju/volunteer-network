@@ -1,0 +1,46 @@
+.login-method img {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    /* margin-right: 10px; */
+    top: 10px;
+    /* padding-right: 30px; */
+    left: 10px;
+}
+
+.login-method span {
+    position: relative;
+    margin-left: 50px;
+}
+.login-method{
+    border: 1px solid gray;
+    width: 400px;
+    margin-right: 0px auto;
+    position: relative;
+    line-height: 50px;
+    left: 50%;
+    margin-left: -200px;
+    height: 50px;
+    border-radius: 20px;
+    
+}
+.login-method:hover{
+    cursor: pointer;
+    color: blue;
+}
+
+
+#login-area-padding{
+    width: 500px;
+    height: 200px;
+    border: 1px solid gray;
+    position: relative;
+    left: 50%;
+    margin-left: -250px;
+    padding-top: 100px;
+    background-color: white;
+}
+.page-bg {
+    background: rgb(0, 0, 0, 0.1);
+    height: 800px;
+}

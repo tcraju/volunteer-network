@@ -4,7 +4,7 @@ const AllEventChild = (props) => {
     const { _id, name, email, desiredDate, workType } = props.singleJob
   
      const deleteHandler = (id) => {
-        fetch(`http://localhost:5000/deleteItem/${id}`, {
+        fetch(`https://polar-spire-08660.herokuapp.com/deleteItem/${id}`, {
             method :'DELETE'
         })
         .then(res => res.json())

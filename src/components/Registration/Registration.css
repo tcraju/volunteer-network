@@ -1,0 +1,9 @@
+#reg-form {
+    text-align: center;
+    margin-top: 60px;
+}
+#form-submit-btn {
+    width: 516px;
+    color: white;
+    background-color: #3F90FC;
+}

@@ -1,8 +1,7 @@
 import { AppBar, Button, Container, IconButton, makeStyles, Toolbar, Typography } from '@material-ui/core';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import './Header.css'
-
+import { UserContext } from '../../App';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -18,7 +17,8 @@ const useStyles = makeStyles((theme) => ({
   }));
   
 
-const Header = () => {
+const Header2 = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const history = useHistory()
     const classes = useStyles();
     const {jobId } = useParams();
@@ -29,20 +29,17 @@ const Header = () => {
                 <IconButton edge="start" className={classes.menuButton} aria-label="menu" onClick={() => history.push('/')}>
                 <img src="https://iili.io/2WPW5G.png" alt=""/>
                 </IconButton>
-                <Typography variant="h6" className={classes.title}>
-                </Typography>
-
+                <Typography variant="h6" className={classes.title}></Typography>
                 <Button onClick={() => history.push('/blog')}> Blog </Button>
                 <Button onClick={() => history.push('/home')}> Home </Button>
                 <Button onClick={() => history.push('/donation')}> Donation </Button>                
                 <Button onClick={() => history.push('/blog')}> Blog </Button>
                 <Button onClick={() => history.push('/taskDetail')}> Appointment </Button>
-                <Button id='reg-btn' onClick={() => history.push(`/registration/${jobId || 1}`)} > Register </Button>
-                <Button id='admin-btn' onClick={() => history.push('/admin')}>Admin</Button>
+                <Button id='admin-btn' onClick={() => history.push('/admin')}>{loggedInUser.name}</Button>
             </Toolbar>
         </AppBar>
         </Container>
     );
 };
 
-export default Header;
+export default Header2;

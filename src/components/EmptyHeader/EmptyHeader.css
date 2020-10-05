@@ -1,0 +1,10 @@
+#header-image{
+    text-align: center;
+}
+#header-image img {
+    width: 200px;
+    height: 64px;
+}
+#header-image img:hover{
+    cursor: pointer;
+}

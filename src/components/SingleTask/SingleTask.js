@@ -23,7 +23,7 @@ const useStyles = makeStyles({
 
 const SingleTask = (props) => {
     const {_id, name, image } = props.task
-    // console.log(props.task);
+    console.log(props.task);
     const history = useHistory()
     
     const classes = useStyles();

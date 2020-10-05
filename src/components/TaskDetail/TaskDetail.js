@@ -1,6 +1,7 @@
 import { Container, Grid } from '@material-ui/core';
 import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../App';
+import Header2 from '../Header2/Header2';
 import UnitTaskDetail from '../UnitTaskDetail/UnitTaskDetail';
 import './TaskDetail.css'
 
@@ -9,7 +10,7 @@ const TaskDetail = () => {
     const [registeredTask, setRegisteredTask] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/registeredJob')
+        fetch('https://polar-spire-08660.herokuapp.com/registeredJob')
             .then(response => response.json())
             .then(data => setRegisteredTask(data))
         console.log(registeredTask);
@@ -22,6 +23,10 @@ const TaskDetail = () => {
 
 
     return (
+        <>
+        <Header2></Header2>
+        <br/>
+        <br/>
         <div className='detail-task-area'>
         <Container >
         <Grid container spacing={5}>
@@ -34,6 +39,7 @@ const TaskDetail = () => {
         </Grid>
         </Container>
         </div>
+        </>
 
     );
 };

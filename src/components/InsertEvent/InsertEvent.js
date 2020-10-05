@@ -30,7 +30,7 @@ const InsertEvent = () => {
         // const detailInfoForTask = {...loggedInUser, ...volunteerInfo, ...selectedDate, ...additionalTaskInfo}
       
     
-        fetch('http://localhost:5000/addJobCategory',{
+        fetch('https://polar-spire-08660.herokuapp.com/addJobCategory',{
             method:'POST',
             headers:{'content-type': 'application/json'},
             body:JSON.stringify(eventInfo)

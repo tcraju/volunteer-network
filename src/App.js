@@ -30,39 +30,28 @@ function App(props) {
   const [loggedInUser, setLoggedInUser] = useState({});
   return (
     <UserContext.Provider value = {[loggedInUser, setLoggedInUser]}>
-      <h3>email: {loggedInUser.email}</h3>
+      {/* <h3>email: {loggedInUser.email}</h3> */}
       <Router>
         
-        <Header></Header>
+        {/* <Header></Header> */}
         <Switch>
           <Route path="/home">
             <Home></Home>
           </Route>
-
           <Route path="/login">
             <Login></Login>
           </Route>
-          <Route path="/admin">
-            <Admin></Admin>
-          </Route>
-
           <Route exact path="/">
             <Home></Home>
           </Route>
-
-
-          <Route path="/allEvent">
-            <AllEvent></AllEvent>
-          </Route>
-          <Route path="/insertEvent">
-            <InsertEvent></InsertEvent>
-          </Route>
-
           <PrivateRoute path="/registration/:jobId">
             <Registration></Registration>
           </PrivateRoute>
           <PrivateRoute path="/taskDetail">
             <TaskDetail></TaskDetail>
+          </PrivateRoute>
+          <PrivateRoute path="/admin">
+            <Admin></Admin>
           </PrivateRoute>
           <Route path="*">
             <NotFound></NotFound>

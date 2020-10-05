@@ -1,0 +1,11 @@
+#home-logo{
+    width: 200px;
+    height: 80px;
+    margin-left: 35px;
+}
+#home-logo:hover{
+    cursor: pointer;
+}
+.toggle-item{
+    margin-left: 35px;
+}

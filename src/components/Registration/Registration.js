@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import { Button, Grid } from '@material-ui/core';
+import { Button, Container, Grid } from '@material-ui/core';
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import { UserContext } from '../../App';
 import { useHistory, useParams } from 'react-router-dom';
+import EmptyHeader from '../EmptyHeader/EmptyHeader';
+import './Registration.css'
 
 
 
@@ -30,7 +32,7 @@ const Registration = () => {
     const [task, setTask] = useState([]);
  
     useEffect(() => {
-        fetch('http://localhost:5000/jobCategory')
+        fetch('https://polar-spire-08660.herokuapp.com/jobCategory')
         .then( response => response.json())
         .then(data => setTask(data))
        
@@ -42,12 +44,7 @@ const Registration = () => {
     const [volunteerInfo, setVolunteerInfo] = useState({
         taskId: jobId,
         description:''
-        // workType: task.length && selectedTask[0].name,
-        // taskImage: task.length && selectedTask[0].image
     });
-
-
-
 
     const handleBlur = (e) => {
         let isFieldValid = true;
@@ -58,8 +55,6 @@ const Registration = () => {
             setVolunteerInfo(newVolunteerInfo);           
         }
     }
-
-
 
     const [selectedDate, setSelectedDate] = useState({
         desiredDate: new Date(),
@@ -75,12 +70,10 @@ const Registration = () => {
         let taskName = selectedTask[0].name
         let taskImg = selectedTask[0].image
         const additionalTaskInfo = {workType: taskName, taskImage: taskImg}
-
         
         const detailInfoForTask = {...loggedInUser, ...volunteerInfo, ...selectedDate, ...additionalTaskInfo}
-        
-    
-        fetch('http://localhost:5000/addTask',{
+            
+        fetch('https://polar-spire-08660.herokuapp.com/addTask',{
             method:'POST',
             headers:{'content-type': 'application/json'},
             body:JSON.stringify(detailInfoForTask)
@@ -93,12 +86,11 @@ const Registration = () => {
         e.preventDefault();
     }
 
-
-
-
-
     return (
-        <form className={classes.root}  autoComplete="off" onSubmit={handleSubmit}>
+        <>
+        <EmptyHeader></EmptyHeader>
+        <Container className='form-padding'>
+        <form className={classes.root} id='reg-form'  autoComplete="off" onSubmit={handleSubmit}>
             <TextField id="standard-basic"  label="Full Name" value={loggedInUser.name } />
             <br />
             <TextField id="standard-basic"  label="Username or Email" value={loggedInUser.email} />
@@ -121,13 +113,15 @@ const Registration = () => {
             <br />
             <TextField id="job-descripton" name='description' label="Description" onBlur={handleBlur} required/>
             <br />
-            <TextField id="job-category"  value={task.length && selectedTask[0].name} />
+            <TextField id="job-category"  value={task.length? selectedTask[0].name : ""} />
             <br />
-            <Button type="submit" variant="contained">Registration</Button>
+            <Button type="submit" variant="contained" id='form-submit-btn'>Registration</Button>
 
 
 
         </form>
+        </Container>
+        </>
     );
 };
 
