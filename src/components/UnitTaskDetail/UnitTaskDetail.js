@@ -3,7 +3,20 @@ import React from 'react';
 import './UnitTaskDetail.css'
 
 const UnitTaskDetail = (props) => {
-    const { taskImage, desiredDate, workType } = props.singleJob
+    const { _id, taskImage, desiredDate, workType } = props.singleJob
+
+    const deleteHandler = (id) => {
+        fetch(`http://localhost:5000/deleteItem/${id}`, {
+            method :'DELETE'
+        })
+        .then(res => res.json())
+        .then (result => {
+            console.log('deleted successfully')
+        })
+        
+    }
+
+
     return (
         <div className='single-task-area'>
         <Grid container spacing={4}>
@@ -19,7 +32,7 @@ const UnitTaskDetail = (props) => {
                 <h5 ml={5}>{desiredDate.slice(0,10)}</h5>
             </Grid>
             <Grid item xs={3}>
-                <Button className='cancel-btn'>Cancel</Button>
+                <Button className='cancel-btn' onClick={() => deleteHandler(_id)}>Cancel</Button>
             </Grid>
 
         </Grid>

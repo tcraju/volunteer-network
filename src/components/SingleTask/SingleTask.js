@@ -22,15 +22,16 @@ const useStyles = makeStyles({
 
 
 const SingleTask = (props) => {
-    const { id, name, image } = props.task
+    const {_id, name, image } = props.task
+    // console.log(props.task);
     const history = useHistory()
     
     const classes = useStyles();
-    // console.log(id, name, image);
+
     return (
 
 
-        <Link onClick={() => { history.push(`/registration/${id}`) }}>
+        <Link onClick={() => { history.push(`/registration/${_id}`) }}>
         <Card className={classes.root}>
             <CardActionArea>
                 <CardMedia

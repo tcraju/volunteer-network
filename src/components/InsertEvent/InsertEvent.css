@@ -1,0 +1,19 @@
+#insert-event-form{
+  
+    border: 0px;
+    padding: 0;
+}
+#insert-event-form input {
+    width: 400px;
+    height: 30px;
+}
+#insert-event-form h5 {
+    margin-bottom: 3px !important;
+   
+}
+#submit-btn{
+    width: 400px;
+    height: 30px;
+    background-color: #0084FF;
+
+}

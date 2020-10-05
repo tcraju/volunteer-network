@@ -36,7 +36,7 @@ const Registration = () => {
        
     },[jobId]);
 
-    let selectedTask = task.filter(x => x.id == jobId)
+    let selectedTask = task.filter(x => x._id == jobId)
 
  
     const [volunteerInfo, setVolunteerInfo] = useState({

@@ -1,0 +1,28 @@
+#all-events {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #all-events td, #all-events th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #all-events tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #all-events tr:hover {background-color: #ddd;}
+  
+  #all-events th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+  }
+  .del-btn img{
+      width: 30px;
+  }
+  .del-btn {
+      text-align: center;
+  }

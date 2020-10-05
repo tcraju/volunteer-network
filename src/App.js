@@ -21,6 +21,8 @@ import Login from './components/Login/Login';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Admin from './components/Admin/Admin';
 import Header from './components/Header/Header';
+import AllEvent from './components/AllEvent/AllEvent';
+import InsertEvent from './components/InsertEvent/InsertEvent';
 
 export const UserContext = createContext();
 
@@ -46,6 +48,14 @@ function App(props) {
 
           <Route exact path="/">
             <Home></Home>
+          </Route>
+
+
+          <Route path="/allEvent">
+            <AllEvent></AllEvent>
+          </Route>
+          <Route path="/insertEvent">
+            <InsertEvent></InsertEvent>
           </Route>
 
           <PrivateRoute path="/registration/:jobId">
