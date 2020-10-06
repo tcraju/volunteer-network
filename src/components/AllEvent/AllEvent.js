@@ -1,18 +1,14 @@
-import { Container } from '@material-ui/core';
-import React, { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../../App';
+import React, { useEffect, useState } from 'react';
 import AllEventChild from '../AllEventChild/AllEventChild';
 import './AllEvent.css'
 
 const AllEvent = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [registeredTask, setRegisteredTask] = useState([]);
 
     useEffect(() => {
         fetch('https://polar-spire-08660.herokuapp.com/registeredJob')
             .then(response => response.json())
             .then(data => setRegisteredTask(data))
-        console.log(registeredTask);
     }, []);
 
 

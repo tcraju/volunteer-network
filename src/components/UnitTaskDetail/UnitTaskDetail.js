@@ -13,12 +13,13 @@ const UnitTaskDetail = (props) => {
         .then (result => {
             console.log('deleted successfully')
         })
+        .then (document.getElementById(id).style.display='none')
         
     }
 
 
     return (
-        <div className='single-task-area'>
+        <div className='single-task-area' id={_id}>
         <Grid container spacing={4}>
 
             <Grid  item xs={3}>

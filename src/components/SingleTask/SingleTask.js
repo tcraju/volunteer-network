@@ -9,7 +9,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import './SingleTask.css'
 import { Link } from '@material-ui/core';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 
 const useStyles = makeStyles({
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
 
 const SingleTask = (props) => {
     const {_id, name, image } = props.task
-    console.log(props.task);
+
     const history = useHistory()
     
     const classes = useStyles();

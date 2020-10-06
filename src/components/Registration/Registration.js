@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import { Button, Container, Grid } from '@material-ui/core';
+import { Button, Container} from '@material-ui/core';
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import { UserContext } from '../../App';
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 const Registration = () => {
     const history = useHistory()
     const classes = useStyles();
-    const {jobId } = useParams();
+    const {_id } = useParams();
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     const [task, setTask] = useState([]);
@@ -36,13 +36,13 @@ const Registration = () => {
         .then( response => response.json())
         .then(data => setTask(data))
        
-    },[jobId]);
+    },[]);
 
-    let selectedTask = task.filter(x => x._id == jobId)
+    let selectedTask = task.filter(x => x._id == _id)
 
  
     const [volunteerInfo, setVolunteerInfo] = useState({
-        taskId: jobId,
+        taskId: _id,
         description:''
     });
 
@@ -111,12 +111,11 @@ const Registration = () => {
                     />
             </MuiPickersUtilsProvider>
             <br />
-            <TextField id="job-descripton" name='description' label="Description" onBlur={handleBlur} required/>
+            <TextField id="job-description" name='description' label="Description" onBlur={handleBlur} required/>
             <br />
-            <TextField id="job-category"  value={task.length? selectedTask[0].name : ""} />
+            <TextField id="job-category"  value={selectedTask.length? selectedTask[0].name : ""} />
             <br />
             <Button type="submit" variant="contained" id='form-submit-btn'>Registration</Button>
-
 
 
         </form>

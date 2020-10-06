@@ -1,6 +1,6 @@
 import { AppBar, Button, Container, IconButton, makeStyles, Toolbar, Typography } from '@material-ui/core';
 import React, { useContext } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 import { UserContext } from '../../App';
 
 
@@ -21,7 +21,6 @@ const Header2 = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const history = useHistory()
     const classes = useStyles();
-    const {jobId } = useParams();
     return (
         <Container>
         <AppBar position="static">

@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import './App.css';
-// import Header from './components/Header/Header';
-// import Shop from './components/Shop/Shop';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
-// 
+ 
 import NotFound from './components/NotFound/NotFound';
 
 
@@ -20,21 +17,18 @@ import Registration from './components/Registration/Registration';
 import Login from './components/Login/Login';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Admin from './components/Admin/Admin';
-import Header from './components/Header/Header';
-import AllEvent from './components/AllEvent/AllEvent';
-import InsertEvent from './components/InsertEvent/InsertEvent';
+
 
 export const UserContext = createContext();
 
 function App(props) {
   const [loggedInUser, setLoggedInUser] = useState({});
   return (
-    <UserContext.Provider value = {[loggedInUser, setLoggedInUser]}>
-      {/* <h3>email: {loggedInUser.email}</h3> */}
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+
       <Router>
-        
-        {/* <Header></Header> */}
         <Switch>
+
           <Route path="/home">
             <Home></Home>
           </Route>
@@ -44,7 +38,7 @@ function App(props) {
           <Route exact path="/">
             <Home></Home>
           </Route>
-          <PrivateRoute path="/registration/:jobId">
+          <PrivateRoute path="/registration/:_id">
             <Registration></Registration>
           </PrivateRoute>
           <PrivateRoute path="/taskDetail">

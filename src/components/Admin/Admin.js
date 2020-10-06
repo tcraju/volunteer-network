@@ -1,13 +1,11 @@
 import { Button, Grid } from '@material-ui/core';
-import React, { useContext, useState } from 'react';
+import React, {useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { UserContext } from '../../App';
 import AllEvent from '../AllEvent/AllEvent';
 import InsertEvent from '../InsertEvent/InsertEvent';
 import './Admin.css'
 
 const Admin = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const history = useHistory()
     const [clickArea, setClickArea] = useState({
         clicked:'volunteerList'

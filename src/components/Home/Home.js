@@ -14,7 +14,6 @@ const Home = () => {
         fetch('https://polar-spire-08660.herokuapp.com/jobCategory')
         .then( response => response.json())
         .then(data => setTask(data))
-        console.log(task);
     },[]);
 
 

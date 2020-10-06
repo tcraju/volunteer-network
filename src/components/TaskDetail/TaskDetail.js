@@ -13,14 +13,9 @@ const TaskDetail = () => {
         fetch('https://polar-spire-08660.herokuapp.com/registeredJob')
             .then(response => response.json())
             .then(data => setRegisteredTask(data))
-        console.log(registeredTask);
     }, []);
 
     let individualTask = registeredTask.filter(x => x.email == loggedInUser.email)
-    console.log(loggedInUser.mail);
-    console.log(individualTask);
-
-
 
     return (
         <>

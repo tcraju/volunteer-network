@@ -1,5 +1,4 @@
 import { Button, Container, Grid } from '@material-ui/core';
-import userEvent from '@testing-library/user-event';
 import React, { useState } from 'react';
 import './InsertEvent.css'
 
@@ -22,14 +21,7 @@ const InsertEvent = () => {
         }
     }
     const handleSubmit = (e) => {
-        // let taskName = selectedTask[0].name
-        // let taskImg = selectedTask[0].image
-        // const additionalTaskInfo = {workType: taskName, taskImage: taskImg}
-
-        
-        // const detailInfoForTask = {...loggedInUser, ...volunteerInfo, ...selectedDate, ...additionalTaskInfo}
-      
-    
+  
         fetch('https://polar-spire-08660.herokuapp.com/addJobCategory',{
             method:'POST',
             headers:{'content-type': 'application/json'},
@@ -39,15 +31,9 @@ const InsertEvent = () => {
         .then(data => {
             console.log(data);
         })
-        // history.push('/taskDetail')
+
         e.preventDefault();
     }
-
-
-
-
-
-
 
 
     return (

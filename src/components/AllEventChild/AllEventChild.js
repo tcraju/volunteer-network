@@ -11,6 +11,9 @@ const AllEventChild = (props) => {
         .then (result => {
             console.log('deleted successfully')
         })
+        .then (document.getElementById(id).style.display='none')
+        
+       
         
     }
 

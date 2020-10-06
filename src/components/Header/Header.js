@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 const Header = () => {
     const history = useHistory()
     const classes = useStyles();
-    const {jobId } = useParams();
+    const {_id} = useParams();
     return (
         <Container>
         <AppBar position="static">
@@ -37,7 +37,8 @@ const Header = () => {
                 <Button onClick={() => history.push('/donation')}> Donation </Button>                
                 <Button onClick={() => history.push('/blog')}> Blog </Button>
                 <Button onClick={() => history.push('/taskDetail')}> Appointment </Button>
-                <Button id='reg-btn' onClick={() => history.push(`/registration/${jobId || 1}`)} > Register </Button>
+                {/* <Button id='reg-btn' onClick={() => history.push(`/registration/${jobId} || '5f7a006f4d5b18438892fb19'`)} > Register </Button> */}
+                <Button id='reg-btn' onClick={() => history.push(_id && `/registration/${_id}`)} > Register </Button>
                 <Button id='admin-btn' onClick={() => history.push('/admin')}>Admin</Button>
             </Toolbar>
         </AppBar>
