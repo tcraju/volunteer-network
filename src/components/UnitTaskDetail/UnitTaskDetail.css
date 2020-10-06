@@ -9,3 +9,10 @@
     background-color: white;
     border-radius: 10px;
 }
+.cancel-btn{
+    width: 100px ;
+    background-color: lightgray !important;
+    padding: 5px 10px;
+    position: absolute;
+    top: 80px;
+}
